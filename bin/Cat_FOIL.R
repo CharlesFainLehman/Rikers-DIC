@@ -10,8 +10,7 @@ eight_to_date <- function(date){
 
 dic <- data.frame()
 
-for(dir in list.dirs("./FOIL")) {
-  if(dir == "./FOIL") {next}
+for(dir in list.dirs("./daily\ files/06-02-2016\ -\ 06-01-2022/")) {
   for(file in list.files(dir)){
     print(file)
     date <- eight_to_date(stringr::str_match(file, "\\d{8}")[1])
