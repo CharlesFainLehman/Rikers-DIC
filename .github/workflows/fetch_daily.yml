@@ -2,11 +2,11 @@
 #Courtesy yanjingzhu https://github.community/t/how-to-make-a-workflow-file-to-save-the-output-as-a-file-to-my-github-repo/18352/2
 
 name: fetch_daily
-#on: [push]
+on: [push]
 
 on:
-  schedule:
-    - cron: "*/15 * * * *" 
+#  schedule:
+#    - cron: "*/15 * * * *" 
 
 jobs:
   build:
