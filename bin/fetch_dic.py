@@ -6,4 +6,4 @@ from datetime import date
 todays_prisoners = pd.read_json('https://data.cityofnewyork.us/resource/7479-ugqb.json?$limit=50000', storage_options = {'X-App-Token':'p7zbW0RmUIiLtNo3XeA39pGY8'})
 
 #DOC_Inmates_InCustody_Daily_20160602
-todays_prisoners.to_csv("dat/via_github/DOC_Inmates_InCustody_Daily_" + date.today().strftime("%Y%m%d"))
+todays_prisoners.to_csv("./dat/via_github/DOC_Inmates_InCustody_Daily_" + date.today().strftime("%Y%m%d"))
