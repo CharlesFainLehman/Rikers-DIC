@@ -9,4 +9,5 @@ todays_prisoners = pd.read_json('https://data.cityofnewyork.us/resource/7479-ugq
 print("got file at " + str(datetime.now()))
 
 #DOC_Inmates_InCustody_Daily_20160602
-todays_prisoners.to_csv("./dat/via_github/DOC_Inmates_InCustody_Daily_" + date.today().strftime("%Y%m%d"))
+yesterday = date.today() - timedelta(days = 1)
+todays_prisoners.to_csv("./dat/via_github/DOC_Inmates_InCustody_Daily_" + yesterday.strftime("%Y%m%d"))
