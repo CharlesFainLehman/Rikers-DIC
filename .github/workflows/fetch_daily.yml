@@ -6,7 +6,7 @@ name: fetch_daily
 
 on:
   schedule:
-    - cron: "*/5 * * * *" 
+    - cron: "58 16 * * *" 
 
 jobs:
   build:
@@ -27,7 +27,7 @@ jobs:
       run: |
         python ./bin/fetch_dic.py
         ls
-    - name: pushing new file
+    - name: adding new file
       run: |
         git config --local user.name  ${{ github.actor }}
         git add ./dat/via_github/
