@@ -2,11 +2,11 @@
 #Courtesy yanjingzhu https://github.community/t/how-to-make-a-workflow-file-to-save-the-output-as-a-file-to-my-github-repo/18352/2
 
 name: fetch_daily
-on: [push]
+#on: [push]
 
-#on:
-#  schedule:
-#    - cron: "*/5 * * * *" 
+on:
+  schedule:
+    - cron: "*/5 * * * *" 
 
 jobs:
   build:
@@ -29,9 +29,11 @@ jobs:
         ls
     - name: pushing new file
       run: |
-        git remote set-url origin ${{ secrets.ssh }}
-        git status
+        git config --local user.name  ${{ github.actor }}
         git add ./dat/via_github/
         git commit -m "Adding new file"
-        git fetch origin main
-        git push origin main
+    - name: Push changes  # push the output folder to your repo
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        force: true
