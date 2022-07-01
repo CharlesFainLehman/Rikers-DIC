@@ -6,7 +6,7 @@ name: fetch_daily
 
 on:
   schedule:
-    - cron: "7 17 * * *" 
+    - cron: "*/15 * * * *" 
 
 jobs:
   build:
