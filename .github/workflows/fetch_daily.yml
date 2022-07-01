@@ -1,4 +1,5 @@
 #Courtesy weide-zhou https://github.community/t/how-to-setup-github-actions-to-run-my-python-script-on-schedule/18335
+#Courtesy yanjingzhu https://github.community/t/how-to-make-a-workflow-file-to-save-the-output-as-a-file-to-my-github-repo/18352/2
 
 name: fetch_daily
 on: [push]
@@ -25,3 +26,12 @@ jobs:
     - name: execute fetch script
       run: |
         python ./bin/fetch_dic.py
+        ls
+    - name: pushing new file
+      run: |
+        git remote set-url origin ${{ secrets.ssh }}
+        git status
+        git add ./dat/via_github/
+        git commit -m "Adding new file"
+        git fetch origin main
+        git push origin main
