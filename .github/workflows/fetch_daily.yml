@@ -19,4 +19,5 @@ jobs:
           python-version: 3.8 #install the python needed
       - name: execute fetch script
         run: |
+          pip install pandas
           python ./bin/fetch_dic.py
