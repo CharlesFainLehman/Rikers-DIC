@@ -4,20 +4,20 @@ name: fetch_daily
 
 on:
   schedule:
-    - cron: "*/10 * * * *" 
+    - cron: "15 16 * * *" 
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    steps:
-      - name: checkout repo content
-        uses: actions/checkout@v2 # checkout the repository content to github runner.
-      - name: setup python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8 #install the python needed
+	steps:
+	- uses: actions/checkout@v3
+	- name: Set up Python
+	  uses: actions/setup-python@v3
+	  with:
+	    python-version: '3.8'
+	- name: Install dependencies
+	  run: python -m pip install --upgrade pip pandas
       - name: execute fetch script
         run: |
-          pip install pandas
           python ./bin/fetch_dic.py
