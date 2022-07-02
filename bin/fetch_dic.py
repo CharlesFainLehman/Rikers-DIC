@@ -12,4 +12,4 @@ print("got file at " + str(datetime.now()))
 #Basically, I run the github action at 4:25 AM UTC, so I get yesterday's file before it gets updated/don't risk github scheduling executing to get today's file tomorrow
 #But to account for this, I label it as yesterday's file
 yesterday = date.today() - timedelta(days = 1)
-todays_prisoners.to_csv("./dat/via_github/DOC_Inmates_InCustody_Daily_" + yesterday.strftime("%Y%m%d"))
+todays_prisoners.to_csv("./dat/via_github/DOC_Inmates_InCustody_Daily_" + yesterday.strftime("%Y%m%d") + ".csv", index=False)
