@@ -1,7 +1,10 @@
 library(shiny)
 library(vroom)
+library(dplyr)
+library(ggplot2)
 
-#rikers <- vroom("dat/clean/DIC-06012016-06022022.csv")
+# Build dat/combined.csv with bin/cat_dic.R first.
+rikers <- vroom("dat/combined.csv")
 start.date <- min(rikers$date)
 end.date <- max(rikers$date)
 
@@ -23,15 +26,15 @@ server <- function(input, output, session) {
     filter(rikers, date > input$viewDate[1], date <= input$viewDate[2]) %>%
       count(date)
   }, ignoreInit = T)
-  
+
   output$distPlot <- renderPlot({
-    if (nrow(rikersData() == 1)) {
-      ggplot(rikersData(), aes(x = date, y=n)) + 
-        geom_line() + 
+    if (nrow(rikersData()) == 1) {
+      ggplot(rikersData(), aes(x = date, y=n)) +
+        geom_col() +
         theme(panel.grid = element_blank())
       } else {
-      ggplot(rikersData(), aes(x = date, y=n)) + 
-        geom_col() + 
+      ggplot(rikersData(), aes(x = date, y=n)) +
+        geom_line() +
         theme(panel.grid = element_blank())
     }
   }, res = 96)

@@ -1,0 +1,9 @@
+.DS_Store
+.Rproj.user
+.Rhistory
+
+# Generated concatenations of the daily files
+dat/combined.csv
+dat/processed/
+__pycache__/
+*.pyc

@@ -2,6 +2,6 @@ As of the most recent update of this Readme, this repository contains every "dai
 
 dat/ contains the files. They come from two sources. Files I obtained through FOIL — covering, roughly, 6/2/16 through 6/30/2022 — are in the foil/ folder. Files obtained through a Python script now executed through Github actions are in via_github/. Note that every file is essentially the same. They don't contain a date column, so the date has to be pulled out of the name of the file. 
 
-bin/ contains scripts for the project. That includes the Python script that Github actions runs, plus two scripts (one in R, one in Python — I don't think the Python one works) for concatenating all the files into one big file for analysis.
+bin/ contains scripts for the project. That includes the Python script that Github actions runs (bin/fetch_dic.py), plus two scripts (one in R, one in Python) for concatenating all the files into one big file for analysis. cat_dic.R writes dat/combined.csv; cat_dic.py writes dat/processed/DOC_Inmates_InCustody_Daily_full.csv. Both outputs are gitignored.
 
-This repository should update with the latest file every morning at around 12:30 AM ET.
+This repository should update with the latest file every morning at around 12:30 AM ET. If that first run fails, the workflow retries at roughly 3:25 AM and 6:25 AM ET; the fetch script skips days that already have a file and refuses to save a file if the data portal has already rolled over to a newer snapshot (so a late retry can't mislabel a day).
